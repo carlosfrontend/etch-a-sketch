@@ -3,9 +3,31 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: #367ecf;
+}
+
 .title {
   font-family: 'Leckerli One', cursive;
   font-size: 3.5em;
   text-align: center;
   padding: .3em;
+  color:#fff;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em auto;
+  height: auto;
+  width: 264px;
+  border: 4px solid #c3c4cc;
+  background-color: #ffffff;
+}
+
+.square {
+  height: 16px;
+  width: 16px;
+  border: .3px solid #cdcccc;
 }
