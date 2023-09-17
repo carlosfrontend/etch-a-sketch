@@ -21,8 +21,8 @@ body {
   flex-wrap: wrap;
   margin: 1em auto;
   height: auto;
-  width: 656px;
-  border: 8px solid #454547;
+  width: 656px; /* 640px wide + 16px border left and right sum*/
+  border: 8px solid #454547; /*16px is sum of left and right border */
   background-color: #ffffff;
 }
 
@@ -30,4 +30,5 @@ body {
   height: 40px;
   width: 40px;
   border: .3px solid #cdcccc;
+  cursor: pointer;
 }
