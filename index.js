@@ -3,6 +3,7 @@ const h1 = document.createElement('h1');
 const fragment = document.createDocumentFragment();
 let div;
 const squares = document.querySelectorAll('#container')[0].childNodes;
+const buttonChangeGrid = document.createElement('button');
 
 for (let i = 0; i < 256; i++) {
   div = document.createElement('div');
@@ -24,3 +25,11 @@ squares.forEach(square => square.addEventListener('mouseleave', () => {
   square.style.background = '#555';
 }));
 
+buttonChangeGrid.textContent = 'Change Grid';
+buttonChangeGrid.className = 'change-grid';
+buttonChangeGrid.setAttribute('onclick', 'changeGrid()' );
+container.before(buttonChangeGrid);
+
+let changeGrid = () => {
+
+}
