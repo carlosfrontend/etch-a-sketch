@@ -75,16 +75,13 @@ let changeGrid = () => {
     }
   } else {
 
-    if (squaresNum < 16) {
-
-      alert('Your Number is smaller than 16.\nTry Again!');
-      cleanSketch();
-      return false;
-
-    }
-    if (squaresNum > 100) {
-
+    if (squaresNumPerSide > 100) {
       alert('Your Number is greater than 100.\nTry Again!');
+      return false;
+      
+    }else if (squaresNumPerSide < 16) {
+      
+      alert('Your Number is smaller than 16.\nTry Again!');
       return false;
 
     }
