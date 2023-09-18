@@ -1,9 +1,10 @@
+const main = document.getElementById('main');
+const buttonsGroup = document.getElementById('buttons-group');
 const container = document.getElementById('container');
 const newContainer = document.getElementById('container');
-const h1 = document.createElement('h1');
 const fragment = document.createDocumentFragment();
 const squares = document.querySelectorAll('#container')[0].childNodes;
-const buttonChangeGrid = document.createElement('button');
+const buttonChangeGrid = document.getElementById('change-grid');
 const CONTAINER_WIDTH = document.getElementById('container').offsetWidth;
 let squaresNumPerSide = 16;
 let side = CONTAINER_WIDTH / squaresNumPerSide;
@@ -44,17 +45,7 @@ const createGrid = function () {
 }
 
 window.addEventListener('ready', createGrid());
-
-h1.className = 'title';
-h1.textContent = 'Sketch App';
-
-container.before(h1);
 container.appendChild(fragment);
-
-buttonChangeGrid.textContent = 'Change Grid';
-buttonChangeGrid.className = 'change-grid';
-buttonChangeGrid.setAttribute('onclick', 'changeGrid(fragment)');
-container.before(buttonChangeGrid);
 
 let changeGrid = () => {
 
@@ -92,7 +83,8 @@ let changeGrid = () => {
     }
 
   }
-
+  main.appendChild(container);
+  main.appendChild(buttonsGroup);
   container.appendChild(fragment);
   draw();
 

@@ -1,31 +1,93 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  background-color: #367ecf;
+html, body {
+  height: 100vh;
+  background-image: linear-gradient(to top, #307dd0 0%, #330867 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .title {
   font-family: 'Leckerli One', cursive;
   font-size: 3.5rem;
   text-align: center;
-  color:#fff;
-  padding: .75rem;
-  text-shadow: .0625rem .125rem .125rem #000;
+  color: #fff;
+  padding: 0.75rem;
+  text-shadow: 0.0625rem 0.125rem 0.125rem #000;
+}
+
+#main {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 2em;
 }
 
 #container {
   display: flex;
   flex-wrap: wrap;
-  margin: 1em auto;
   height: 31em;
   width: 31em;
   background-color: #ffffff;
   box-shadow: 0px 0.0625em 0em 0.75em black;
-  border-radius: 0.3125em ;
+  border-radius: 0.3125em;
+}
+
+#buttons-group {
+  width: 20em;
+  height: 31em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn {
+  width: 15rem;
+  height: 4.5rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 0.398em;
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+  border: 0.125em solid #fff;
+  font-weight: 100;
+  outline: none;
+  transition-property: background-color, color, transform, letter-spacing, width, border;
+  transition-duration: .223s;
+}
+
+.btn:hover {
+  width: 16rem;
+  background-color: #057c09f4;
+  color: #fff;
+  transform: skewX(-5deg);
+  outline: none;
+  letter-spacing: 0.025em;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+} 
+
+.centered {
+  display: block;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+.material-symbols-outlined {
+  font-size: 3rem !important;
 }
 
 .square {
@@ -33,30 +95,22 @@ body {
   cursor: pointer;
 }
 
-.change-grid {
- display: block;
- margin: auto;
- margin-bottom: 40px;
- padding: .8em 1em;
- font-size: 1.5rem;
- font-weight: bold;
- border:.1875rem solid #fff;
- outline: none;
- background-color: transparent;
- color:#ffffff;
- border-radius: 0.625em;
- cursor: pointer;
- transition: background-color;
- transition: color;
- transition: border;
- transition: letter-spacing .228s ease-in-out;
- text-shadow: 0.0625em 0.125em 0.0625em #000;
+#footer {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4em;
 }
 
-.change-grid:hover {
-  background-color:#eeff00;
-  color: #000000;
-  letter-spacing: .125rem;
-  border:.1875rem solid #000;
-  text-shadow: none;
+#footer > * {
+  text-decoration: none;
+  font-size: 3.5rem;
+  color:#fff;
+}
+
+.fa-brands:hover {
+  color:#050211;
+  transform: scale(1.2);
 }
