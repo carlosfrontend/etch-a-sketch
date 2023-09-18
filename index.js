@@ -53,25 +53,47 @@ buttonChangeGrid.setAttribute('onclick', 'changeGrid(fragment)');
 container.before(buttonChangeGrid);
 
 let changeGrid = () => {
-  squaresNumPerSide = Number(prompt('Enter a number'));
+
+  squaresNumPerSide = Number(prompt('Enter a number of squares per side. Must be between 16 and 100.'));
   side = CONTAINER_WIDTH / squaresNumPerSide;
-  squaresNum = Math.pow(squaresNumPerSide, 2)
+  squaresNum = Math.pow(squaresNumPerSide, 2);
 
-  document.querySelectorAll('.square').forEach(square => square.parentNode.removeChild(square)); //Remove squares from container
+  if (squaresNumPerSide >= 16 && squaresNumPerSide <= 100) {
 
-  buttonChangeGrid.after(newContainer);
+    document.querySelectorAll('.square').forEach(square => square.parentNode.removeChild(square)); //Remove squares from container
 
+    buttonChangeGrid.after(newContainer);
 
-  for (let i = 0; i < squaresNum; i++) {
-   
-    const newDiv = document.createElement('div');
-    newDiv.className = 'square';
-    newDiv.style.width = `${side / 16}em`;
-    newDiv.style.height = `${side / 16}em`;
-    fragment.appendChild(newDiv);
+    for (let i = 0; i < squaresNum; i++) {
+
+      const newDiv = document.createElement('div');
+      newDiv.className = 'square';
+      newDiv.style.width = `${side / 16}em`;
+      newDiv.style.height = `${side / 16}em`;
+      fragment.appendChild(newDiv);
+
+    }
+  } else {
+
+    if (squaresNum < 16) {
+
+      alert('Your Number is smaller than 16.\nTry Again!');
+      cleanSketch();
+      return false;
+
+    }
+    if (squaresNum > 100) {
+
+      alert('Your Number is greater than 100.\nTry Again!');
+      return false;
+
+    }
+
   }
+
   container.appendChild(fragment);
   draw();
+
 };
 
 draw();

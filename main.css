@@ -29,8 +29,6 @@ body {
 }
 
 .square {
-  /* height: 1.875rem;
-  width: 1.875rem; */
   border: 0.01875em solid #cdcccc;
   cursor: pointer;
 }
