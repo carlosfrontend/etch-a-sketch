@@ -9,6 +9,10 @@ let squaresNumPerSide = 16;
 let side = CONTAINER_WIDTH / squaresNumPerSide;
 let squaresNum = Math.pow(squaresNumPerSide, 2);
 
+const cleanDraw = () => {
+  squares.forEach(square => square.style.background = '#fff');
+}
+
 const draw = () => {
 
   squares.forEach((square, index) => square.addEventListener('mouseover', () => {
@@ -76,11 +80,12 @@ let changeGrid = () => {
   } else {
 
     if (squaresNumPerSide > 100) {
+      cleanDraw();
       alert('Your Number is greater than 100.\nTry Again!');
       return false;
       
     }else if (squaresNumPerSide < 16) {
-      
+      cleanDraw();
       alert('Your Number is smaller than 16.\nTry Again!');
       return false;
 
