@@ -5,13 +5,33 @@ const newContainer = document.getElementById('container');
 const fragment = document.createDocumentFragment();
 const squares = document.querySelectorAll('#container')[0].childNodes;
 const buttonChangeGrid = document.getElementById('change-grid');
+const normalButton = document.getElementById('normal');
+const eraseButton = document.getElementById('eraser');
+const cleanButton = document.getElementById('clean');
 const CONTAINER_WIDTH = document.getElementById('container').offsetWidth;
-let squaresNumPerSide = 16;
+let squaresNumPerSide = 42;
 let side = CONTAINER_WIDTH / squaresNumPerSide;
 let squaresNum = Math.pow(squaresNumPerSide, 2);
 
 const cleanDraw = () => {
   squares.forEach(square => square.style.background = '#fff');
+  draw();
+}
+
+const erase = () => {
+
+  squares.forEach((square, index) => square.addEventListener('mouseover', () => {
+
+    square.style.background = '#fff';
+
+  }));
+
+  squares.forEach(square => square.addEventListener('mouseleave', () => {
+
+    square.style.background = '#fff';
+
+  }));
+
 }
 
 const draw = () => {
@@ -90,4 +110,7 @@ let changeGrid = () => {
 
 };
 
+normalButton.addEventListener('click', draw);
+cleanButton.addEventListener('click', cleanDraw);
+eraseButton.addEventListener('click', erase);
 draw();
