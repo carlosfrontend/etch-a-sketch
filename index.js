@@ -8,8 +8,9 @@ const buttonChangeGrid = document.getElementById('change-grid');
 const normalButton = document.getElementById('normal');
 const eraseButton = document.getElementById('eraser');
 const cleanButton = document.getElementById('clean');
+const grayScaleButton = document.getElementById('gray-scale');
 const CONTAINER_WIDTH = document.getElementById('container').offsetWidth;
-let squaresNumPerSide = 42;
+let squaresNumPerSide = 16;
 let side = CONTAINER_WIDTH / squaresNumPerSide;
 let squaresNum = Math.pow(squaresNumPerSide, 2);
 
@@ -20,7 +21,7 @@ const cleanDraw = () => {
 
 const erase = () => {
 
-  squares.forEach((square, index) => square.addEventListener('mouseover', () => {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
 
     square.style.background = '#fff';
 
@@ -35,10 +36,9 @@ const erase = () => {
 }
 
 const draw = () => {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
 
-  squares.forEach((square, index) => square.addEventListener('mouseover', () => {
-
-    square.style.background = '#333';
+    square.style.background = '#555';
 
   }));
 
@@ -48,6 +48,34 @@ const draw = () => {
 
   }));
 
+}
+
+const drawGray = () => {
+
+
+    let opacity = 0;
+
+    squares.forEach(square => square.addEventListener('mouseover', () => {
+
+      opacity += parseFloat(.1);
+
+      if(opacity >= 1){
+
+        opacity = 0.1;
+
+      }
+
+      square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;
+
+      
+    }));
+    
+    squares.forEach(square => square.addEventListener('mouseleave', () => {
+  
+      square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;      
+         
+    }));
+  
 }
 
 const createGrid = function () {
@@ -94,8 +122,8 @@ let changeGrid = () => {
       cleanDraw();
       alert('Your Number is greater than 100.\nTry Again!');
       return false;
-      
-    }else if (squaresNumPerSide < 16) {
+
+    } else if (squaresNumPerSide < 16) {
       cleanDraw();
       alert('Your Number is smaller than 16.\nTry Again!');
       return false;
@@ -106,11 +134,11 @@ let changeGrid = () => {
   main.appendChild(container);
   main.appendChild(buttonsGroup);
   container.appendChild(fragment);
-  draw();
 
 };
 
-normalButton.addEventListener('click', draw);
 cleanButton.addEventListener('click', cleanDraw);
+normalButton.addEventListener('click', draw);
 eraseButton.addEventListener('click', erase);
+grayScaleButton.addEventListener('click', drawGray);
 draw();
