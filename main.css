@@ -121,3 +121,11 @@ html, body {
   color:#050211;
   transform: scale(1.2);
 }
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+.crosshair {
+  cursor: crosshair;
+}
