@@ -9,14 +9,16 @@ const normalButton = document.getElementById('normal');
 const eraseButton = document.getElementById('eraser');
 const cleanButton = document.getElementById('clean');
 const grayScaleButton = document.getElementById('gray-scale');
+const randomColorButton = document.getElementById('random');
 const CONTAINER_WIDTH = document.getElementById('container').offsetWidth;
 let squaresNumPerSide = 16;
 let side = CONTAINER_WIDTH / squaresNumPerSide;
 let squaresNum = Math.pow(squaresNumPerSide, 2);
+var randomNumber = 0;
 
 const cleanDraw = () => {
   squares.forEach(square => square.style.background = '#fff');
-  draw();
+  erase();
 }
 
 const erase = () => {
@@ -49,33 +51,59 @@ const draw = () => {
   }));
 
 }
+const randomizeColor = () => {
+
+  let getColor = () => {
+    const arrOfColors = [];
+    for (let i = 0; i < 3; i++) {
+      arrOfColors.push(Math.floor(Math.random() * 256 + 1));
+    }
+    return arrOfColors;
+  }
+
+  var myColor;
+  
+  squares.forEach(square => square.addEventListener('mouseover', () => {
+    myColor = getColor();
+    console.log(myColor);
+    square.style.background = `rgb(${myColor.toString()})`;
+  }))
+
+  squares.forEach(square => square.addEventListener('mouseleave', () => {
+    myColor;
+    console.log(myColor);
+    let bgColor = `rgb(${myColor.toString()})`;
+    square.style.background = bgColor;
+  }))
+
+}
 
 const drawGray = () => {
 
 
-    let opacity = 0;
+  let opacity = 0;
 
-    squares.forEach(square => square.addEventListener('mouseover', () => {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
 
-      opacity += parseFloat(.1);
+    opacity += parseFloat(.1);
 
-      if(opacity >= 1){
+    if (opacity >= 1) {
 
-        opacity = 0.1;
+      opacity = 0.1;
 
-      }
+    }
 
-      square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;
+    square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;
 
-      
-    }));
-    
-    squares.forEach(square => square.addEventListener('mouseleave', () => {
-  
-      square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;      
-         
-    }));
-  
+
+  }));
+
+  squares.forEach(square => square.addEventListener('mouseleave', () => {
+
+    square.style.background = `rgba(0,0,0,${opacity.toFixed(1)})`;
+
+  }));
+
 }
 
 const createGrid = function () {
@@ -95,7 +123,7 @@ const createGrid = function () {
 window.addEventListener('ready', createGrid());
 container.appendChild(fragment);
 
-let changeGrid = () => {
+const changeGrid = () => {
 
   squaresNumPerSide = Number(prompt('Enter a number of squares per side. Must be between 16 and 100.'));
   side = CONTAINER_WIDTH / squaresNumPerSide;
@@ -137,8 +165,8 @@ let changeGrid = () => {
 
 };
 
-cleanButton.addEventListener('click', cleanDraw);
 normalButton.addEventListener('click', draw);
+cleanButton.addEventListener('click', cleanDraw);
 eraseButton.addEventListener('click', erase);
+randomColorButton.addEventListener('click', randomizeColor);
 grayScaleButton.addEventListener('click', drawGray);
-draw();
