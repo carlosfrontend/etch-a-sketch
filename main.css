@@ -4,12 +4,14 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100vh;
+html,
+body {
+  height: 100%;
   background-image: linear-gradient(to top, #307dd0 0%, #330867 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 .title {
@@ -21,19 +23,29 @@ html, body {
   text-shadow: 0.0625rem 0.125rem 0.125rem #000;
 }
 
+#button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8em;
+}
+
 #main {
   width: 100%;
+  height: 35em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 2em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 #container {
   display: flex;
   flex-wrap: wrap;
-  height: 31em;
-  width: 31em;
+  height: 28em;
+  width: 28em;
   background-color: #ffffff;
   box-shadow: 0px 0.0625em 0em 0.75em black;
   border-radius: 0.3125em;
@@ -41,7 +53,7 @@ html, body {
 
 #buttons-group {
   width: 20em;
-  height: 31em;
+  height: 28em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -49,9 +61,12 @@ html, body {
 }
 
 .btn {
-  width: 15rem;
+  font-family: 'Silkscreen', cursive;
+  color: lime;
+  width: 10em;
+  font-weight: 800;
   height: 4.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -64,8 +79,9 @@ html, body {
   border: 0.125em solid #fff;
   font-weight: 100;
   outline: none;
-  transition-property: background-color, color, transform, letter-spacing, width, border;
-  transition-duration: .223s;
+  transition-property: background-color, color, transform, letter-spacing, width,
+    border;
+  transition-duration: 0.223s;
 }
 
 .btn:hover {
@@ -78,18 +94,12 @@ html, body {
   border: none;
   color: #ffffff;
   font-weight: bold;
-} 
+}
 
 .btn:focus {
   background-color: yellow;
-  color:black;
-  border:0.125em solid #000;
-}
-
-.centered {
-  display: block;
-  margin: auto;
-  margin-bottom: 2em;
+  color: black;
+  border: 0.125em solid #000;
 }
 
 .material-symbols-outlined {
@@ -99,26 +109,26 @@ html, body {
 .square {
   border: 0.01875em solid #cdcccc;
   cursor: pointer;
-  /* background-color: rgba(0,0,0,0); */
 }
 
 #footer {
-  position: absolute;
   width: 100%;
+  height: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 4em;
+  position: absolute;
+  bottom: 0;
 }
 
 #footer > * {
   text-decoration: none;
   font-size: 3.5rem;
-  color:#fff;
+  color: #fff;
 }
 
 .fa-brands:hover {
-  color:#050211;
+  color: #050211;
   transform: scale(1.2);
 }
 
@@ -128,4 +138,116 @@ html, body {
 
 .crosshair {
   cursor: crosshair;
+}
+
+/* Tablets en horizonal y escritorios normales*/
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  html, body {
+    overflow-y: auto;
+  }
+  #main {
+    height: 24em;
+  }
+
+  #container {
+    height: 19em;
+    width: 19em;
+    box-shadow: none;
+  }
+
+  #buttons-group {
+    height: 19em;
+  }
+
+  .btn {
+    height: 3em;
+    width: 10em;
+    font-size: 1em;
+    transition-property: background-color, color, transform, letter-spacing,
+      width, border;
+    transition-duration: 0.223s;
+  }
+  .btn:hover {
+    width: 12em;
+    background-color: #1e1d13f4;
+    color: #fff;
+    transform: skewX(-5deg);
+    outline: none;
+    letter-spacing: 0.025em;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .material-symbols-outlined {
+    font-size: 2rem !important;
+  }
+}
+
+/* / Móviles en horizontal o tablets en vertical */
+@media (max-width: 767px) {
+  html, body {
+    overflow-y: auto;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  #footer{
+    position: absolute;
+    bottom: 0;  }
+}
+
+/* / Móviles en vertical */
+
+@media (max-width: 480px) {
+  html, body {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  .btn {
+    height: 3em;
+    width: 10em;
+    /* font-size: 1.3em; */
+    transition-property: background-color, color, transform, letter-spacing,
+      width, border;
+    transition-duration: 0.223s;
+  }
+  .btn:hover {
+    width: 12em;
+    background-color: #1e1d13f4;
+    color: #fff;
+    transform: skewX(-5deg);
+    outline: none;
+    letter-spacing: 0.025em;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .material-symbols-outlined {
+    font-size: 3rem !important;
+  }
+
+  #main {
+    height: 55em;
+}
+  
+
+  #container {
+    height: 18em;
+    width: 18em;
+  }
+
+  #buttons-group {
+    height: 35em;
+  }
+
+  .material-symbols-outlined {
+    font-size: 2.5rem !important;
+  }
+  #footer{
+    position: relative;
+    bottom:0  }
 }

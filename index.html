@@ -2,16 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="./main.css" />
     <title>Etch-a-Sketch</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -28,30 +25,32 @@
     <header id="header">
       <h1 class="title">Sketch App</h1>
     </header>
+   <div id="button-container">
     <button
-      id="change-grid"
-      class="btn centered"
-      onclick="changeGrid(fragment)"
-    >
-      Change Grid
-    </button>
+    id="change-grid"
+    class="btn"
+    onclick="changeGrid(fragment)"
+  >
+    Change Grid
+  </button>
+   </div>
     <div id="main">
       <div id="container"></div>
       <div id="buttons-group">
         <button class="btn" id="normal">
-          <span class="material-symbols-outlined"> stylus_note </span>Normal
+          <span class="material-symbols-outlined"> &#xf603 </span>Normal
         </button>
         <button class="btn" id="clean">
-          <span class="material-symbols-outlined"> mop </span>Clean
+          <span class="material-symbols-outlined"> &#xe28d </span>Clean
         </button>
         <button class="btn" id="eraser">
-          <span class="material-symbols-outlined"> ink_eraser </span>Eraser
+          <span class="material-symbols-outlined"> &#xe6d0 </span>Eraser
         </button>
         <button class="btn" id="random">
-          <span class="material-symbols-outlined"> palette </span>Random
+          <span class="material-symbols-outlined"> &#xe40a </span>Random
         </button>
         <button class="btn" id="gray-scale">
-          <span class="material-symbols-outlined"> filter_b_and_w </span
+          <span class="material-symbols-outlined"> &#xe3db </span
           >GrayScale
         </button>
       </div>
