@@ -6,7 +6,6 @@
 
 html,
 body {
-  height: 100%;
   background-image: linear-gradient(to top, #307dd0 0%, #330867 100%);
   background-repeat: no-repeat;
   background-size: cover;
@@ -140,10 +139,9 @@ body {
   cursor: crosshair;
 }
 
-/* Tablets en horizonal y escritorios normales*/
-
 @media (min-width: 768px) and (max-width: 1199px) {
-  html, body {
+  html,
+  body {
     overflow-y: auto;
   }
   #main {
@@ -184,24 +182,37 @@ body {
     font-size: 2rem !important;
   }
 }
-
-/* / Móviles en horizontal o tablets en vertical */
 @media (max-width: 767px) {
-  html, body {
+  html,
+  body {
     overflow-y: auto;
   }
   .title {
     font-size: 3rem;
   }
-  #footer{
-    position: absolute;
-    bottom: 0;  }
+
+  #main {
+    height: 65em;
+  }
+  #buttons-group {
+    margin-top: 3em;
+    height: 30em;
+  }
+  .btn {
+    width: 10em;
+    height: 3em;
+  }
+
+  #footer {
+    position: relative;
+    bottom: 0;
+  }
 }
 
-/* / Móviles en vertical */
 
 @media (max-width: 480px) {
-  html, body {
+  html,
+  body {
     overflow-y: scroll;
     height: 100%;
   }
@@ -232,8 +243,7 @@ body {
 
   #main {
     height: 55em;
-}
-  
+  }
 
   #container {
     height: 18em;
@@ -247,7 +257,14 @@ body {
   .material-symbols-outlined {
     font-size: 2.5rem !important;
   }
-  #footer{
+  #footer {
     position: relative;
-    bottom:0  }
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  #footer {
+    position: absolute;
+  }
 }
