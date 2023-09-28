@@ -11,20 +11,21 @@ const cleanButton = document.getElementById('clean');
 const grayScaleButton = document.getElementById('gray-scale');
 const randomColorButton = document.getElementById('random');
 const CONTAINER_WIDTH = document.getElementById('container').offsetWidth;
-let squaresNumPerSide = 16;
-let side = CONTAINER_WIDTH / squaresNumPerSide;
-let squaresNum = Math.pow(squaresNumPerSide, 2);
+const squaresNum = 16 * 16;
+
+
+let squareSide = '150px';
 
 const cleanDraw = () => {
 
   squares.forEach(square => square.style.background = '#fff');
   erase();
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('crosshair');
   }));
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.add('not-allowed');
   }));
 
@@ -32,7 +33,7 @@ const cleanDraw = () => {
 
 const erase = () => {
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.add('crosshair');
   }));
 
@@ -48,11 +49,11 @@ const erase = () => {
 
 const draw = () => {
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('not-allowed');
   }));
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('crosshair');
   }));
 
@@ -67,11 +68,11 @@ const draw = () => {
 }
 const randomizeColor = () => {
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('not-allowed');
   }));
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('crosshair');
   }));
 
@@ -84,7 +85,7 @@ const randomizeColor = () => {
   }
 
   var myColor;
-  
+
   squares.forEach(square => square.addEventListener('mouseover', () => {
     myColor = getColor();
     square.style.background = `rgb(${myColor.toString()})`;
@@ -100,11 +101,11 @@ const randomizeColor = () => {
 
 const drawGray = () => {
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('not-allowed');
   }));
 
-  squares.forEach(square => square.addEventListener('mouseover',()=> {
+  squares.forEach(square => square.addEventListener('mouseover', () => {
     square.classList.remove('crosshair');
   }));
 
@@ -126,13 +127,15 @@ const drawGray = () => {
 }
 
 const createGrid = function () {
-
+  
   for (let i = 0; i < squaresNum; i++) {
+
     const div = document.createElement('div');
     div.className = 'square';
-    div.style.width = `${side / 16}em`;
-    div.style.height = `${side / 16}em`;
+    div.style.width = `${100 / Math.sqrt(squaresNum)}%`;
+    div.style.height = `${100 / Math.sqrt(squaresNum)}%`;
     fragment.appendChild(div);
+
   }
 
 }
@@ -143,28 +146,37 @@ container.appendChild(fragment);
 const changeGrid = () => {
 
   squaresNumPerSide = Number(prompt('Enter a number of squares per side. Must be between 16 and 100.'));
-  side = CONTAINER_WIDTH / squaresNumPerSide;
-  squaresNum = Math.pow(squaresNumPerSide, 2);
+
+  let newSquaresNum = Math.pow(squaresNumPerSide, 2);
 
   if (squaresNumPerSide >= 16 && squaresNumPerSide <= 100) {
+
     document.querySelectorAll('.square').forEach(square => square.parentNode.removeChild(square)); //Remove squares from container
     buttonChangeGrid.after(newContainer);
-    for (let i = 0; i < squaresNum; i++) {
+
+    for (let i = 0; i < newSquaresNum; i++) {
+
       const newDiv = document.createElement('div');
       newDiv.className = 'square';
-      newDiv.style.width = `${side / 16}em`;
-      newDiv.style.height = `${side / 16}em`;
+      newDiv.style.width = `${100 / Math.sqrt(newSquaresNum)}%`;
+      newDiv.style.height = `${100 / Math.sqrt(newSquaresNum)}%`;
       fragment.appendChild(newDiv);
+
     }
   } else {
+
     if (squaresNumPerSide > 100) {
+
       cleanDraw();
       alert('Your Number is greater than 100.\nTry Again!');
       return false;
+
     } else if (squaresNumPerSide < 16) {
+
       cleanDraw();
       alert('Your Number is smaller than 16.\nTry Again!');
       return false;
+      
     }
 
   }
