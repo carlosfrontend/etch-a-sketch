@@ -262,9 +262,6 @@ body {
   .fa-brands {
     font-size: 3rem;
   }
-  .material-symbols-outlined {
-    font-size: rem !important;
-  }
 
   #buttons-group {
     width: auto;
